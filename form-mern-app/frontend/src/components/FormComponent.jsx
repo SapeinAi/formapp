@@ -24,31 +24,83 @@ const FormComponent = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} style={{ maxWidth: "400px", margin: "auto" }}>
-      <input
-        name="name"
-        value={formData.name}
-        onChange={handleChange}
-        placeholder="Name"
-        required
-      />
-      <input
-        name="email"
-        value={formData.email}
-        onChange={handleChange}
-        placeholder="Email"
-        required
-      />
-      <textarea
-        name="message"
-        value={formData.message}
-        onChange={handleChange}
-        placeholder="Message"
-        required
-      />
-      <button type="submit">Submit</button>
-    </form>
+    <div style={styles.container}>
+      <h2 style={styles.heading}>Contact Us</h2>
+      <form onSubmit={handleSubmit} style={styles.form}>
+        <input
+          name="name"
+          value={formData.name}
+          onChange={handleChange}
+          placeholder="Your Name"
+          required
+          style={styles.input}
+        />
+        <input
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          placeholder="Your Email"
+          type="email"
+          required
+          style={styles.input}
+        />
+        <textarea
+          name="message"
+          value={formData.message}
+          onChange={handleChange}
+          placeholder="Your Message"
+          required
+          style={{ ...styles.input, height: "120px", resize: "none" }}
+        />
+        <button type="submit" style={styles.button}>Send Message</button>
+      </form>
+    </div>
   );
+};
+
+const styles = {
+  container: {
+    maxWidth: "500px",
+    margin: "50px auto",
+    padding: "30px",
+    border: "1px solid #ddd",
+    borderRadius: "8px",
+    boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)",
+    backgroundColor: "#ffffff",
+  },
+  heading: {
+    textAlign: "center",
+    marginBottom: "20px",
+    color: "#333",
+  },
+  form: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "15px",
+  },
+  input: {
+    padding: "12px 15px",
+    fontSize: "16px",
+    borderRadius: "5px",
+    border: "1px solid #ccc",
+    outline: "none",
+    transition: "border-color 0.3s",
+  },
+  button: {
+    padding: "12px",
+    fontSize: "16px",
+    borderRadius: "5px",
+    border: "none",
+    backgroundColor: "#4CAF50",
+    color: "white",
+    cursor: "pointer",
+    transition: "background-color 0.3s",
+  },
+};
+
+// Add hover effect manually:
+styles.button["&:hover"] = {
+  backgroundColor: "#45a049",
 };
 
 export default FormComponent;
